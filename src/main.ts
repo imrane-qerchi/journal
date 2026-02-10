@@ -1,14 +1,23 @@
 import './assets/style.css'
-
 import { createApp } from 'vue'
-import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from 'vue-router/auto-routes'
 
-const app = createApp(App)
+import App from './App.vue'
+import Home from './pages/Home.vue'
+import Journal from './pages/Journal.vue'
+import AddTasnim from './pages/AddTasnim.vue'
+import AddImrane from './pages/AddImrane.vue'
 
-app.use(createRouter({history: createWebHistory(),
-    routes: routes
-}))
+const routes = [
+  { path: '/', component: Home },
+  { path: '/journal', component: Journal },
+  { path: '/add-tasnim', component: AddTasnim },
+  { path: '/add-imrane', component: AddImrane },
+]
 
-app.mount('#app')
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+
+createApp(App).use(router).mount('#app')
